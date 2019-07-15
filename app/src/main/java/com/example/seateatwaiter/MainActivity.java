@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else {
-
+            System.out.println("ciao "+preferences.getString("nome",null));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

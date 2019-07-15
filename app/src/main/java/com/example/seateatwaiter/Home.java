@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,10 +33,12 @@ import okhttp3.Response;
 public class Home extends AppCompatActivity {
 
     String url = "https://seateat-be.herokuapp.com";
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferences = getSharedPreferences("loginref", MODE_PRIVATE);
         setContentView(R.layout.activity_home);
         final Activity activity = this;
 
@@ -93,7 +96,9 @@ public class Home extends AppCompatActivity {
                         System.out.println("invio token ok");
                     }
                 });*/
-                String credenziali = "a" + ":" + "a";
+                //String credenziali = "a" + ":" + "a";
+                String credenziali = preferences.getString("nome", null) + ":" + preferences.getString("password", null);
+                System.out.println("credenzial "+credenziali);
                 final String BasicBase64format = "Basic " + Base64.getEncoder().encodeToString(credenziali.getBytes());
 
 

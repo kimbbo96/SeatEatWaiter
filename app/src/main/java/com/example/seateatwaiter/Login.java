@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    String urlLogin = "https://seateat-be.herokuapp.com/api/login";
+    String urlLogin = "https://seateat-be.herokuapp.com/api/waiterlogin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +107,7 @@ public class Login extends AppCompatActivity {
                                 editor.putString("nome", (username.getText().toString()));
                                 editor.putBoolean("savelogin", true);
                                 editor.putString("password",paswd.getText().toString());
-                                editor.putString("immagine",responsebody.get("immagine").toString());
+                                //editor.putString("immagine",responsebody.get("immagine").toString());
                                 editor.commit();
                                 Intent i = new Intent(Login.this, MainActivity.class);
                                 startActivity(i);
